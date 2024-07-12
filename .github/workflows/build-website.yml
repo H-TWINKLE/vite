@@ -17,8 +17,9 @@ jobs:
             - name: Set branch environment variable
               run: |
                currentBranch=$(git branch --show-current)
+               now_date=$(date "+%Y-%m-%d %H:%M:%S")
 
-               echo "project_branch=${currentBranch}" >> ${GITHUB_ENV}
+               echo "project_branch=${currentBranch}-${now_date}" >> ${GITHUB_ENV}
 
             - name: Use Node.js
               uses: actions/setup-node@v3
