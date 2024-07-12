@@ -16,7 +16,6 @@ permissions: {}
 on:
   push:
     branches:
-      - main
       - release/*
       - feat/*
       - fix/*
