@@ -30,7 +30,7 @@ jobs:
                   cd docs
                   npm install
                   export NODE_OPTIONS=--max-old-space-size=8192
-                  npm docs-build
+                  npm run docs-build
                   ls
                   tar -czvf build.tar.gz build
 
