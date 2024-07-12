@@ -32,9 +32,9 @@ jobs:
                   ls
                   echo ''
                   export NODE_OPTIONS=--max-old-space-size=8192
-                  npm install -g yarn
-                  yarn install
-                  yarn run docs-build
+                  npm install -g pnpm
+                  pnpm install 
+                  pnpm run docs-build
                   ls
                   echo ''
                   tar -czvf build.tar.gz dist
