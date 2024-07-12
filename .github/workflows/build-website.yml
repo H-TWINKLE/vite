@@ -1,0 +1,44 @@
+name: "Build documentation"
+on:
+  push:
+    branches: [ master ]
+    
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        environment: Production
+        steps:
+            - name: Checkout
+              uses: actions/checkout@master
+              with:
+                  persist-credentials: false
+                  submodules: recursive
+                  
+            - name: Set branch environment variable
+              run: |
+               currentBranch=$(git branch --show-current)
+
+               echo "project_branch=${currentBranch}" >> ${GITHUB_ENV}
+
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: Build
+              run: |
+                  cd docs
+                  npm install
+                  export NODE_OPTIONS=--max-old-space-size=8192
+                  npm docs-build
+                  ls
+                  tar -czvf build.tar.gz build
+
+            - name: Create GitHub Release
+              uses: ncipollo/release-action@v1
+              with:
+                   tag: ${{ env.project_branch }}
+                   allowUpdates: true
+                   artifacts: "build.tar.gz"
+                   token: ${{ github.token }}
+                   generateReleaseNotes: true   
