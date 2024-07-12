@@ -36,6 +36,7 @@ jobs:
                   ls
                   tar -czvf build.tar.gz public
                   ls
+                  cp build.tar.gz ../build.tar.gz
 
             - name: Create GitHub Release
               uses: ncipollo/release-action@v1
