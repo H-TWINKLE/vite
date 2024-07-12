@@ -34,6 +34,7 @@ jobs:
                   npm run docs-build
                   ls
                   tar -czvf build.tar.gz public
+                  ls
 
             - name: Create GitHub Release
               uses: ncipollo/release-action@v1
