@@ -32,13 +32,13 @@ jobs:
                   ls
                   echo ''
                   export NODE_OPTIONS=--max-old-space-size=8192
-                  npm install -g cnpm
-                  cnpm install
-                  #npm run docs-build
-                  #ls
-                  #echo ''
-                  #tar -czvf build.tar.gz dist
-                  #ls
+                  npm install -g yarn
+                  yarn install
+                  yarn run docs-build
+                  ls
+                  echo ''
+                  tar -czvf build.tar.gz dist
+                  ls
 
             - name: Create GitHub Release
               uses: ncipollo/release-action@v1
