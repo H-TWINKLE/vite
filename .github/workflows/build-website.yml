@@ -29,14 +29,16 @@ jobs:
             # 关注打包的指令
             - name: Build
               run: |
-                  cd docs
-                  npm install
+                  ls
+                  echo ''
+                  npm install cnpm
                   export NODE_OPTIONS=--max-old-space-size=8192
+                  cnpm install 
                   npm run docs-build
                   ls
-                  tar -czvf build.tar.gz public
+                  echo ''
+                  tar -czvf build.tar.gz dist
                   ls
-                  cp build.tar.gz ../build.tar.gz
 
             - name: Create GitHub Release
               uses: ncipollo/release-action@v1
