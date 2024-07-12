@@ -24,7 +24,8 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: 18
-
+                  
+            # 关注打包的指令
             - name: Build
               run: |
                   cd docs
@@ -32,7 +33,7 @@ jobs:
                   export NODE_OPTIONS=--max-old-space-size=8192
                   npm run docs-build
                   ls
-                  tar -czvf build.tar.gz build
+                  tar -czvf build.tar.gz public
 
             - name: Create GitHub Release
               uses: ncipollo/release-action@v1
