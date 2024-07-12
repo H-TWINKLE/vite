@@ -31,9 +31,8 @@ jobs:
               run: |
                   ls
                   echo ''
-                  npm install cnpm
                   export NODE_OPTIONS=--max-old-space-size=8192
-                  cnpm install 
+                  npm install 
                   npm run docs-build
                   ls
                   echo ''
